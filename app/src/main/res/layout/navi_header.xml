@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="5sp"
+    android:paddingTop="5sp"
+    android:paddingRight="5sp"
+    android:paddingBottom="5sp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:paddingTop="5sp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_account_box_24" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5sp"
+        android:text="test"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tesst" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃" />
+
+
+
+</LinearLayout>

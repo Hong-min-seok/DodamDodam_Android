@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="password">password</string>
+    <string name="username">UserName</string>
+    <string name="dodam">도담도담</string>
+    <string name="wifi">와이파이</string>
+</resources>
