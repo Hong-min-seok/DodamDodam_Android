@@ -14,35 +14,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="10sp"-->
-<!--            android:text="@string/dodam"-->
-<!--            android:textSize="30sp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="10sp"-->
+        <!--            android:text="@string/dodam"-->
+        <!--            android:textSize="30sp" />-->
 
         <ImageView
             android:layout_width="300sp"
             android:layout_height="300sp"
             android:layout_marginBottom="30sp"
-            android:src="@drawable/dodam_logo"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:src="@drawable/dodam_logo" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/ic_baseline_account_box_24"
+                android:layout_marginTop="5sp"
                 android:scaleType="fitXY"
-                android:layout_marginTop="5sp"/>
+                android:src="@drawable/ic_baseline_account_box_24" />
+
             <EditText
+                android:id="@+id/edtUserID"
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
-                android:hint="@string/username" />
+                android:hint="@string/userid" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,16 +56,17 @@
             <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/ic_baseline_lock_24"
+                android:layout_marginTop="5sp"
                 android:scaleType="fitXY"
-                android:layout_marginTop="5sp"/>
+                android:src="@drawable/ic_baseline_lock_24" />
 
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
                 android:hint="@string/password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
 
         </LinearLayout>
 
@@ -71,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:text="login"/>
+            android:text="login" />
 
     </LinearLayout>
 
