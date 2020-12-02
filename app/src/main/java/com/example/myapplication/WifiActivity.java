@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 public class WifiActivity extends AppCompatActivity {
 
     Button btnRegist;
+    ImageButton imgBtn;
     private DrawerLayout drawerLayout;
 
     @Override
@@ -29,6 +32,8 @@ public class WifiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wifi);
 
         btnRegist = findViewById(R.id.btnRegist);
+
+        imgBtn = findViewById(R.id.imgBtnActionBarMenu);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarWifi);
         setSupportActionBar(toolbar);
@@ -62,12 +67,9 @@ public class WifiActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        Log.d("ddd", item.getItemId() + "");
-        Log.d("ddd", R.id.home + "");
-
         switch (item.getItemId()){
             case android.R.id.home:{
-                drawerLayout.openDrawer(GravityCompat.END);
+                drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
         }

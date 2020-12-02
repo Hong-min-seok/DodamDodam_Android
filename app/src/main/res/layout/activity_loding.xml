@@ -7,17 +7,17 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivLoading01"
         android:layout_width="206dp"
         android:layout_height="195dp"
-        app:layout_constraintBottom_toBottomOf="@id/imageView4"
-        app:layout_constraintEnd_toEndOf="@id/imageView4"
-        app:layout_constraintStart_toStartOf="@id/imageView4"
-        app:layout_constraintTop_toTopOf="@id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@id/ivLoading02"
+        app:layout_constraintEnd_toEndOf="@id/ivLoading02"
+        app:layout_constraintStart_toStartOf="@id/ivLoading02"
+        app:layout_constraintTop_toTopOf="@id/ivLoading02"
         app:srcCompat="@drawable/flower_icon5" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvLoadingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -26,10 +26,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLoading02" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvLoadingContent"
         android:layout_width="252dp"
         android:layout_height="95dp"
         android:text="해바라기는 어쩌구 저쩌구 꽃말이 들어갑니다."
@@ -37,11 +37,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoadingName"
         app:layout_constraintVertical_bias="0.307" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivLoading02"
         android:layout_width="370sp"
         android:layout_height="370sp"
         app:layout_constraintEnd_toEndOf="parent"
