@@ -1,43 +1,27 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
+
+import java.util.*;
+
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import androidx.appcompat.widget.Toolbar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.ServerAddress;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
-import org.bson.BsonDocument;
-import org.bson.Document;
+import com.example.myapplication.Tasks.LoginTask;
 
 public class LoginActivity extends AppCompatActivity {
 
     Button btnLogin;
     EditText edtID, edtPwd;
-    MongoClientURI mongoUri;
-    MongoClient mongoClient;
-    MongoCollection<Document> mongoCollection;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,30 +32,74 @@ public class LoginActivity extends AppCompatActivity {
         edtID = findViewById(R.id.edtUserID);
         edtPwd = findViewById(R.id.edtPassword);
 
-//        mongoUri = new MongoClientURI();
-        mongoClient = new MongoClient(new ServerAddress("cluster0-shard-00-01.u4wd4.mongodb.net",27017));
-
-        MongoDatabase db = mongoClient.getDatabase("dodamdodam");
-        mongoCollection = db.getCollection("member");
-        BasicDBObject query = new BasicDBObject();
-        query.put("userid", "test");
-        query.put("password","test");
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                FindIterable<Document> r = mongoCollection.find(query);
-                Log.d("ddd",r.toString());
+                try {
 
-//                Intent intent = new Intent(LoginActivity.this, WifiActivity.class);
-//                startActivity(intent);
+                    LoginTask networkLoginTask = new LoginTask(handler);
+
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("userid", edtID.getText().toString());
+                    params.put("pw", edtPwd.getText().toString());
+
+                    networkLoginTask.execute(params);
+
+                } catch (Exception e) {
+
+                    Toast.makeText(LoginActivity.this, "아이디 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
+
         });
 
-
     }
+
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+
+            switch (msg.what) {
+
+                case -1:
+                    Toast.makeText(LoginActivity.this, "아이디 패스워드를 확인하세요.", Toast.LENGTH_SHORT).show();
+                    break;
+                case 0:
+
+                    SharedPreferences pref = getSharedPreferences("userData", MODE_PRIVATE);
+
+                    SharedPreferences.Editor editor = pref.edit();
+
+                    editor.putString("id", edtID.getText().toString());
+                    editor.putString("pw", edtPwd.getText().toString());
+
+                    editor.commit();
+
+                    String prefDevice = pref.getString("device_id", null);
+                    String prefFnick = pref.getString("fnick", null);
+
+                    if (prefDevice == null) {
+                        Intent intent = new Intent(LoginActivity.this, WifiActivity.class);
+                        intent.putExtra("userid", edtID.getText().toString());
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("device_id", prefDevice);
+                        intent.putExtra("fnick", prefFnick);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    break;
+
+            }
+
+        }
+    };
 
 
 }
